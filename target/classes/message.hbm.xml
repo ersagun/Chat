@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.miage.m2sid.chat.Message" table="Message">
+        <id column="Id" name="id" type="long">
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="org.miage.m2sid.chat.Abonne" column="Login_Abonne" name="expediteur"/>
+        <property column="Objet" name="objet" type="string"/>
+        <property column="Corps" name="corps" type="string"/>
+    </class>
+</hibernate-mapping>

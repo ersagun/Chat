@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class abstract="true" name="org.miage.m2sid.chat.Abonne" table="abonne">
+        <id column="Login" name="login" type="string">
+            <generator class="assigned"/>
+        </id>
+        <property column="Mdp" name="mdp" type="string"/>
+        <set name="messagesEnvoyes">
+            <key column="Login_Abonne"/>
+            <one-to-many class="org.miage.m2sid.chat.Message"/>
+        </set>
+        <union-subclass name="org.miage.m2sid.chat.Entreprise" table="Entreprise">
+            <property column="RaisonSociale" name="raisonSociale" type="string"/>
+        </union-subclass>
+        <union-subclass name="org.miage.m2sid.chat.Particulier" table="Particulier">
+            <property column="Nom" name="nom" type="string"/>
+            <property column="Prenom" name="prenom" type="string"/>
+        </union-subclass>
+    </class>
+</hibernate-mapping>
