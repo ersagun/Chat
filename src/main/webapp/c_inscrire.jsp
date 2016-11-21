@@ -24,7 +24,7 @@
             query.setParameter("a_login", particulier.getLogin());
             List utilisateurExistant = query.list();
             System.out.println(utilisateurExistant.size());
-            if (utilisateurExistant.size() == 0) {
+            if (utilisateurExistant.size() == 0 && (request.getParameter("mdp2")==request.getParameter("mdp"))) {
                 try {
                     session.setAttribute("user", particulier);
                     sessionHibernate.save(particulier);
@@ -39,7 +39,9 @@
             } else {
                 transaction.commit();
                 HibernateUtil.closeSession();
-                response.sendRedirect("v_login.jsp");   
+                request.setAttribute("erreur", "Login existe ou le mot de passe doit être identique !");
+                   RequestDispatcher rd = getServletContext().getRequestDispatcher("/v_erreur.jsp");
+                    rd.forward(request, response);  
             }     
     %>
     <%-- <jsp:forward page="v_messages.jsp" /> --%>
@@ -72,7 +74,7 @@
             query2.setParameter("a_login", entreprise.getLogin());
             List utilisateurExistant2 = query2.list();
             System.out.println(utilisateurExistant2.size());
-            if (utilisateurExistant2.size() == 0) {
+            if (utilisateurExistant2.size() == 0 && (request.getParameter("mdp2")==request.getParameter("mdp")) ) {
                 try {
                     session.setAttribute("user", entreprise);
                     sessionHibernate2.save(entreprise);
@@ -87,7 +89,9 @@
             } else {
                 transaction2.commit();
                 HibernateUtil.closeSession();
-                response.sendRedirect("v_login.jsp");   
+                request.setAttribute("erreur", "Login existe ou le mot de passe doit être identique !");
+                   RequestDispatcher rd = getServletContext().getRequestDispatcher("/v_erreur.jsp");
+                    rd.forward(request, response); 
             }     
     %>
     </c:if>
