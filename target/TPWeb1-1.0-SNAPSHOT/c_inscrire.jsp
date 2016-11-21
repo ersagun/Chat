@@ -64,4 +64,30 @@
     <p>My type is: <c:out value="${typeAbonne}"/><p>
         <jsp:useBean id="entreprise" scope="session" class="org.miage.m2sid.chat.Entreprise" />
         <jsp:setProperty name="entreprise" property="*" />
+    <%
+            final Session sessionHibernate2 = HibernateUtil.currentSession();
+            final Transaction transaction2 = sessionHibernate2.beginTransaction();
+            String hql2 = "FROM Abonne A WHERE A.login = :a_login";
+            Query query2 = sessionHibernate2.createQuery(hql2);
+            query2.setParameter("a_login", entreprise.getLogin());
+            List utilisateurExistant2 = query2.list();
+            System.out.println(utilisateurExistant2.size());
+            if (utilisateurExistant2.size() == 0) {
+                try {
+                    session.setAttribute("user", entreprise);
+                    sessionHibernate2.save(entreprise);
+                    transaction2.commit();
+                    HibernateUtil.closeSession();
+                    response.sendRedirect("c_getMessages.jsp");
+                } catch (Exception ex) {
+                    // Log the exception here
+                    transaction2.rollback();
+                    throw ex;
+                }
+            } else {
+                transaction2.commit();
+                HibernateUtil.closeSession();
+                response.sendRedirect("v_login.jsp");   
+            }     
+    %>
     </c:if>
