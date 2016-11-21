@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">org.gjt.mm.mysql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/chatWeb</property>
+        <property name="hibernate.connection.username">chatWeb</property>
+        <property name="hibernate.connection.password">chatWeb2017miage</property>
+        <property name="show_sql">true</property>
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+        <!-- Mapping files -->
+        <mapping resource="abonne.hbm.xml"/>
+        <mapping resource="message.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
