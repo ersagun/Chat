@@ -24,7 +24,7 @@
             query.setParameter("a_login", particulier.getLogin());
             List utilisateurExistant = query.list();
             System.out.println(utilisateurExistant.size());
-            if (utilisateurExistant.size() == 0 && (request.getParameter("mdp2")==request.getParameter("mdp"))) {
+            if (utilisateurExistant.size() == 0 && (request.getParameter("mdp2").equals(request.getParameter("mdp")))) {
                 try {
                     session.setAttribute("user", particulier);
                     sessionHibernate.save(particulier);
@@ -74,7 +74,7 @@
             query2.setParameter("a_login", entreprise.getLogin());
             List utilisateurExistant2 = query2.list();
             System.out.println(utilisateurExistant2.size());
-            if (utilisateurExistant2.size() == 0 && (request.getParameter("mdp2")==request.getParameter("mdp")) ) {
+            if (utilisateurExistant2.size() == 0 && (request.getParameter("mdp2").equals(request.getParameter("mdp"))) ) {
                 try {
                     session.setAttribute("user", entreprise);
                     sessionHibernate2.save(entreprise);
