@@ -25,7 +25,7 @@
                             Bienvenue à l'application de Chat réalisé en JEE
                         </h2>
                         <p>
-                            Pour pouvoir utiliser l'application vous avez besoin de vous connecter. Si vous avez déjà un compte, veuillez cliquer sur Se connecter, sinon pour créer un compte veuillez cliquer sur S'inscrire.
+                            Pour pouvoir utiliser l'application vous avez besoin de vous connecter. Si vous avez déjà un compte, vous pouvez connecter en cliquant sur se connecter, sinon veuillez vous inscrire.
                         </p>
                     </div> 
 
