@@ -52,23 +52,6 @@
                     rd.forward(request, response);  
             }     
     %>
-    <%-- <jsp:forward page="v_messages.jsp" /> --%>
-    <%--
-    <c:set var="loginNotExist" scope="page" value="true" />
-    <c:forEach items="${list}" var="item">
-        <c:if test="${item.login ==particulier.login}">
-            <c:set var="loginNotExist" scope="page" value="false" />
-        </c:if>
-    </c:forEach>
-    <c:choose>
-        <c:when test="${loginNotExist}">
-            <jsp:forward page="v_messages.jsp" />      
-        </c:when>
-        <c:otherwise>
-            <jsp:forward page="v_inscrire.jsp" />      
-        </c:otherwise>
-    </c:choose>
-    --%>
 </c:if>
 <c:if test="${typeAbonne == 'entreprise'}">
     <p>My type is: <c:out value="${typeAbonne}"/><p>
@@ -88,6 +71,7 @@
                     Annuaire a2=new Annuaire("annuaire de"+entreprise.getLogin(),set2);
                     sessionHibernate2.save(a2);
                     entreprise.setAnnuaire(a2);
+                    session.setAttribute("user", entreprise);
                     sessionHibernate2.save(entreprise);
                     transaction2.commit();
                     HibernateUtil.closeSession();
