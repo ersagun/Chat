@@ -9,13 +9,15 @@ import java.util.Set;
 
 public abstract class Abonne {
 
+    private Annuaire annuaire;
     private String mdp;
     private String login;
     private Set<Message> messagesEnvoyes;
 
-    public Abonne(String mdp, String login) {
+    public Abonne(String mdp, String login, Annuaire a) {
         this.mdp = mdp;
         this.login = login;
+        this.annuaire=a;
     }
 
     public Abonne() {
@@ -44,5 +46,13 @@ public abstract class Abonne {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+    
+    public void setAnnuaire(Annuaire a){
+        this.annuaire=a;
+    }
+    
+    public Annuaire getAnnuaire(){
+        return this.annuaire;
     }
 }

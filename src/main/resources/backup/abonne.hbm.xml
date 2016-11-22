@@ -17,5 +17,6 @@
             <property column="Nom" name="nom" type="string"/>
             <property column="Prenom" name="prenom" type="string"/>
         </union-subclass>
+        
     </class>
 </hibernate-mapping>

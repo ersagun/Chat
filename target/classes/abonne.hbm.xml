@@ -10,6 +10,8 @@
             <key column="Login_Abonne"/>
             <one-to-many class="org.miage.m2sid.chat.Message"/>
         </set>
+         <many-to-one class="org.miage.m2sid.chat.Annuaire" column="Login_Abonne_Annuaire" name="annuaire"/>
+        
         <union-subclass name="org.miage.m2sid.chat.Entreprise" table="Entreprise">
             <property column="RaisonSociale" name="raisonSociale" type="string"/>
         </union-subclass>

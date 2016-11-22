@@ -9,8 +9,8 @@ public class Entreprise extends Abonne {
 
     private String raisonSociale;
 
-    public Entreprise(String rs, String mdp, String login) {
-        super(login, mdp);
+    public Entreprise(String rs, String mdp, String login,Annuaire a) {
+        super(login, mdp,a);
         this.raisonSociale = rs;
     }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.miage.m2sid.chat.Annuaire" table="Annuaire">
+        <id column="Id" name="id" type="long">
+            <generator class="increment"/>
+        </id>
+         <set name="lesAbonnes">
+            <key column="Login_Abonne_Annuaire"/>
+            <one-to-many class="org.miage.m2sid.chat.Abonne"/>
+        </set>
+        <property column="Nom" name="nom" type="string"/>
+    </class>
+</hibernate-mapping>

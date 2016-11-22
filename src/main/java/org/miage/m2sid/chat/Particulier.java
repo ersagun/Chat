@@ -10,8 +10,8 @@ public class Particulier extends Abonne {
     private String nom;
     private String prenom;
 
-    public Particulier(String unNom, String unPrenom, String mdp, String login) {
-        super(mdp, login);
+    public Particulier(String unNom, String unPrenom, String mdp, String login,Annuaire a) {
+        super(mdp, login,a);
         this.nom = unNom;
         this.prenom = unPrenom;
     }
